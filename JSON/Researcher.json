@@ -1,0 +1,55 @@
+{
+  "promptDetails": {
+    "task": "Academic Research Prompt for Mathematical Finance",
+    "description": "A structured prompt for generating academic research materials on a specified topic within mathematical finance, with a focus on novel, state-of-the-art, and peer-reviewed content."
+  },
+  "researchParameters": {
+    "topic": "[{{TOPIC}}]",
+    "researchQuestions": [
+      "What are the fundamental mathematical models and theorems (e.g., Itô's Lemma, Girsanov Theorem) that underpin this topic?",
+      "What are the key partial differential equations (PDEs) or stochastic differential equations (SDEs) used?",
+      "What are the primary numerical methods (e.g., Monte Carlo simulations, finite difference methods) for implementation?",
+      "How do different models within this topic compare in terms of assumptions, complexity, and real-world applicability?",
+      "What are the most recent state-of-the-art advancements and novel contributions in this area?"
+    ],
+    "keywords": [
+      "quantitative finance",
+      "stochastic calculus",
+      "option pricing",
+      "derivative pricing",
+      "risk management",
+      "algorithmic trading"
+    ],
+    "scope": {
+      "timePeriod": "e.g., Last 10 years, Post-2008 Crisis",
+      "geographicalFocus": "e.g., US Markets, European Markets, Global",
+      "discipline": "Mathematical Finance"
+    },
+    "researchFocus": [
+      "Novel Research",
+      "State-of-the-Art Methods"
+    ]
+  },
+  "sourcePreferences": {
+    "type": [
+      "Peer-reviewed journals (e.g., Mathematical Finance, Quantitative Finance)",
+      "Academic books",
+      "Conference papers",
+      "Pre-print archives (e.g., arXiv q-fin)"
+    ],
+    "minimumCount": 5,
+    "enforcePeerReviewedOnly": true
+  },
+  "outputSpecification": {
+    "format": "[{{FORMAT}}]",
+    "formatOptions": [
+      "Literature Review",
+      "Annotated Bibliography",
+      "Derivation of a Key Model",
+      "Comparison of Numerical Methods",
+      "Research Proposal Outline"
+    ],
+    "length": "e.g., 1000 words, 5 pages",
+    "citationStyle": "e.g., APA, IEEE, Chicago"
+  }
+}

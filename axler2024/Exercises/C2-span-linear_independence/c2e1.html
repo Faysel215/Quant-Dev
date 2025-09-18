@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vector Span Visualization</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.min.js"></script>
+    <style>
+        body { margin: 0; overflow: hidden; }
+        canvas { display: block; }
+    </style>
+</head>
+<body>
+    <script>
+        // Scene setup
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // Add orbit controls
+        const controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.update();
+
+        // Coordinate axes
+        const axesHelper = new THREE.AxesHelper(5);
+        scene.add(axesHelper);
+
+        // Create the plane x+y+z=0
+        const planeGeometry = new THREE.PlaneGeometry(8, 8);
+        const planeMaterial = new THREE.MeshBasicMaterial({ 
+            color: 0x00ff00, 
+            side: THREE.DoubleSide,
+            opacity: 0.3,
+            transparent: true
+        });
+        const plane = new THREE.Mesh(planeGeometry, planeMaterial);
+        plane.rotation.x = Math.atan(-1 / Math.sqrt(2));
+        plane.rotation.y = Math.PI / 4;
+        scene.add(plane);
+
+        // Define vectors
+        const vectors = [
+            new THREE.Vector3(1, 0, -1),
+            new THREE.Vector3(0, 1, -1),
+            new THREE.Vector3(1, 1, -2),
+            new THREE.Vector3(2, -1, -1)
+        ];
+
+        const colors = [0xff0000, 0x0000ff, 0xffff00, 0xff00ff];
+        const labels = ['v₁ = (1,0,-1)', 'v₂ = (0,1,-1)', 'v₃ = (1,1,-2)', 'v₄ = (2,-1,-1)'];
+
+        // Create arrows and points
+        vectors.forEach((vec, index) => {
+            // Arrow helper
+            const arrowHelper = new THREE.ArrowHelper(
+                vec.clone().normalize(),
+                new THREE.Vector3(0, 0, 0),
+                vec.length(),
+                colors[index],
+                0.5,
+                0.2
+            );
+            scene.add(arrowHelper);
+
+            // Point at the end of the vector
+            const pointGeometry = new THREE.SphereGeometry(0.1, 32, 32);
+            const pointMaterial = new THREE.MeshBasicMaterial({ color: colors[index] });
+            const point = new THREE.Mesh(pointGeometry, pointMaterial);
+            point.position.copy(vec);
+            scene.add(point);
+
+            // Label
+            const canvas = document.createElement('canvas');
+            const context = canvas.getContext('2d');
+            canvas.width = 256;
+            canvas.height = 128;
+            context.fillStyle = '#ffffff';
+            context.fillRect(0, 0, canvas.width, canvas.height);
+            context.font = '24px Arial';
+            context.fillStyle = `#${colors[index].toString(16).padStart(6, '0')}`;
+            context.fillText(labels[index], 10, 50);
+
+            const texture = new THREE.CanvasTexture(canvas);
+            const labelMaterial = new THREE.SpriteMaterial({ map: texture });
+            const label = new THREE.Sprite(labelMaterial);
+            label.position.copy(vec.clone().multiplyScalar(1.1));
+            label.scale.set(3, 1.5, 1);
+            scene.add(label);
+        });
+
+        // Camera position
+        camera.position.set(5, 5, 5);
+        camera.lookAt(0, 0, 0);
+
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            controls.update();
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+</html>
