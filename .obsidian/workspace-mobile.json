@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "axler2024/Proofs/Proof - Commutativity in Complex Numbers.md",
-                "mode": "preview",
+                "file": "templates/concept_template.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Proof - Commutativity in Complex Numbers"
+              "title": "concept_template"
             }
           }
         ]
@@ -154,8 +154,13 @@
       "bases:Create new base": false
     }
   },
-  "active": "32b848a6f9d66921",
+  "active": "62925f6131929f71",
   "lastOpenFiles": [
+    "templates/definition_template.md",
+    "templates/concept_template.md",
+    "JSON/Definition-Formatter.json",
+    "axler2024/Proofs/Proof - Commutativity in Complex Numbers.md",
+    "templates",
     "JSON/Master_Learner.json",
     "JSON/Mathematician.json",
     "JSON/Power_User.json",
@@ -164,14 +169,10 @@
     "JSON/Master_Learner-json-prompt.json",
     "JSON",
     "untitled folder",
-    "axler2024/Exercises/C2-span-linear_independence/c2e1.html",
     "axler2024/Proofs/Proof - Associativity of Complex Addition.md",
     "axler2024/Definitions/Vector Span/2.3-span.md",
     "axler2024/Definitions/Vector Span/2.4-finite-dim_vec_space.md",
-    "axler2024/Definitions/Vector Span/2.3-visual.html",
     "axler2024/Definitions/Vector Span/2.2-linear_combination.md",
-    "axler2024/Exercises/C2-span-linear_independence/c2e1.json",
-    "axler2024/Proofs/Proof - Commutativity in Complex Numbers.md",
     "Proof - Associativity of Complex Addition.md",
     "Proofs/Proof - Associativity of Complex Addition.md",
     "Proofs/Proof - Commutativity in Complex Numbers.md",
